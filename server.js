@@ -1,4 +1,19 @@
-import http from 'node:http';
-const port = process.env.PORT || 8080;
-const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scope Sieve</title><style>body{font-family:Inter,system-ui,sans-serif;background:#0f172a;color:#f8fafc;display:grid;place-items:center;min-height:100vh;margin:0}.card{max-width:720px;padding:32px;border:1px solid #334155;border-radius:20px;background:#111827}h1{margin:0 0 12px;font-size:40px}p{line-height:1.6;color:#cbd5e1}.pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#1d4ed8;color:white;font-size:12px;letter-spacing:.04em;text-transform:uppercase}</style></head><body><main class="card"><div class="pill">Bootstrapping</div><h1>Scope Sieve</h1><p>Scope Sieve is being built right now. This URL is reserved early so the final app can land here as soon as the build finishes.</p></main></body></html>`;
-http.createServer((req,res)=>{ if (req.url === '/health') { res.writeHead(200, {'content-type':'application/json'}); res.end(JSON.stringify({ok:true, placeholder:true})); return; } res.writeHead(200, {'content-type':'text/html; charset=utf-8'}); res.end(html); }).listen(port, ()=> console.log(`placeholder listening on ${port}`));
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import { createApp } from './server/app.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const distDir = path.join(__dirname, 'dist');
+
+const app = createApp({
+  distDir: fs.existsSync(distDir) ? distDir : undefined,
+});
+
+const port = Number(process.env.PORT || 8080);
+
+app.listen(port, () => {
+  console.log(`Scope Sieve listening on port ${port}`);
+});

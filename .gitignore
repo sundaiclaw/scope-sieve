@@ -1,7 +1,7 @@
-node_modules
-dist
-.env
-.env.local
+node_modules/
+dist/
+coverage/
+.env*
+!.env.example
 .DS_Store
-coverage
 .workflow/
