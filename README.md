@@ -109,4 +109,6 @@ Expected response:
 
 ## Deployment URLs
 
-Final Cloud Run and Sundai URLs are not included in this repository because deployment was not performed in this implementation pass.
+- Live app: https://scope-sieve-859414203684.us-central1.run.app
+- Sundai page: https://www.sundai.club/projects/5390c10f-e639-472b-a8fa-6322921132cc
+- GitHub repo: https://github.com/sundaiclaw/scope-sieve
