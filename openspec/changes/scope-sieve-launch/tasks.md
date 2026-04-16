@@ -1,0 +1,3 @@
+- [ ] Build client-request intake UI
+- [ ] Add AI-powered scope analysis, clarifying questions, pricing angles, and reply draft generation
+- [ ] Verify locally, redeploy to the reserved Cloud Run service, publish on Sundai, and document final links
